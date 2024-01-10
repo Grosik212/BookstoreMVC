@@ -1,0 +1,699 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+body {
+    background-color: rgb(253,241,225);
+    overflow-x: hidden;
+}
+.center{
+    padding: 50px;
+}
+/* ----------------------------------------------logo nad nawigacją */
+header .row
+{
+  max-width: 85%;
+  margin: auto;
+}
+.logo
+{
+  height: 80px;
+  border-top: solid 3px black;
+  border-bottom: solid 3px black;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.logo a
+{
+  text-decoration: none;
+  font-size: 38px;
+  text-align: end;
+  color: rgb(255, 255, 255);
+  text-shadow: 3px 3px black;
+  font-style:italic;
+}
+.logoo
+{
+  height: 80px;
+  border-top: solid 3px black;
+  border-bottom: solid 3px black;
+}
+
+    .logoo input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 17px;
+        border: none;
+        width: 75%;
+        float: left;
+    }
+
+    .logoo .search-container button {
+        float: right;
+        padding: 6px;
+        margin-top: 8px;
+        background: #ddd;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        max-width: 100px;
+        float: left;
+    }
+.topnav .search-container button {
+    background-color: rgb(22,53,61);
+}
+
+    .topnav .search-container button:hover {
+        background: #ccc;
+    }
+.bookStoreLogo
+{
+  display: inline-block;
+}
+.bookStoreName {
+    display: inline-block;
+}
+.bookStoreName a
+{
+  text-align: left;
+}
+.quote {
+    font-family: 'Oleo Script Swash Caps', cursive;
+    float: left;
+    margin-right: 0;
+}
+#quote1 {
+    text-align: left;
+    padding-left: 3px;
+}
+#quote2 {
+    text-align: center;
+}
+#quote3 {
+    text-align: right;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    border-top: solid 3px black;
+    border-bottom: solid 3px black;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 5;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 10px;
+    }
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+#goToBasket {
+    text-align: center;
+    background-color: rgb(253,185,127);
+    margin: 1px;
+}
+/* ------------------------------------------nawigacja */
+nav {
+    background-color: rgb(98,179,176);
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    margin: auto;
+    max-width: 84.3%;
+}
+nav ul
+{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+    nav ul li {
+        display: inline-block;
+        list-style-type: none;
+        background-color: rgb(98,179,176);
+    }
+        nav ul li a {
+            display: block;
+            color: aliceblue;
+            font-size: 20px;
+            text-decoration: none;
+            text-align: left;
+            padding-left: 5px;
+            padding-right: 5px;
+            box-sizing: content-box;
+            border-radius: 0;
+            border: 2px rgb(98,179,176) solid;
+        }
+    nav ul li a:hover {
+        background-color: rgb(253,185,127);
+        color: white;
+        border-radius: 15px;
+        border: 2px rgb(145,150,96) solid;
+    }
+#btn-content
+{
+  position: absolute;
+  display: none;
+}
+#btn-content li
+{
+  display: block;
+
+}
+.btnn:hover #btn-content 
+{
+  display: block;
+}
+.log-btn {
+    border-radius: 15px;
+    background-color: rgb(145,150,96);
+}
+.blue{background-color: rgb(79, 154, 208);}
+.log-btn a 
+{
+  text-decoration: none;
+  color: white;
+}
+.log-btn:hover
+{
+  background-color: #04AA6D;
+  color: white;
+}
+.log-btn a:hover
+{
+  color: white;
+  background-color: #04AA6D;
+}
+nav a.icon 
+{
+  color: #fff;
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  display: none;
+  }
+nav a.icon:hover
+{
+  background-color: rgb(53, 53, 53);
+  color: rgb(243, 148, 6);
+}
+nav a i.iconn
+{
+  display: none;
+}
+nav a:hover
+{
+  background-color: rgb(243, 148, 6);
+  color: black;
+}
+
+
+/* --------------------------------------------------------------->index.html */
+main {
+    margin: auto;
+    background-color: rgb(245, 245, 245);
+    min-height: 800px;
+    box-shadow: 0px 5px 10px 5px grey inset;
+    border-radius: 1%;
+}
+section {
+    margin-top: 30px;
+    /* padding-top: 20px; */
+    text-align: center;
+    margin-bottom: 30px;
+    color: aliceblue;
+    background-color: rgb(22,53,61);
+}  
+section img
+{
+  width: 100%;
+  max-height: 400px;
+  border-radius: 30px;
+  object-fit: cover;
+} 
+.zdjecie:hover
+{
+  transform: scale(1.1);
+  transition: 1s;
+  opacity: 0.8;
+}
+.recommended {
+    border: solid 5px rgb(145,150,96);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+    .recommended h1 {
+        background-color: rgb(145,150,96);
+    }
+.index_sale
+{
+  border: solid 5px red;
+}
+.index_sale h1
+{
+  background-color: crimson;
+}
+.index_news
+{
+  border: solid 5px rgb(0, 113, 243);
+}
+.index_news h1
+{
+  background-color: rgb(0, 113, 243);
+}
+.index_for_kids
+{
+  border: solid 5px rgb(186, 0, 223);
+}
+.index_for_kids h1
+{
+  background-color: rgb(186, 0, 223);
+}
+.top_view
+{
+  border: solid 5px rgb(32, 161, 0);
+}
+.top_view h1
+{
+  background-color: rgb(32, 161, 0);
+}
+figcaption
+{
+  margin-top: 8px;
+  color: aliceblue;
+}
+.top_view_ramka
+{
+  bottom: 0;
+}
+.top_view_ramka a
+{
+  text-decoration: none;
+  color: white;
+}
+.top_view_ramka_tresc
+{
+  bottom: 0;
+}
+.top_view_ramka_tresc a
+{
+  text-decoration: none;
+  color: black;
+}
+.card {
+    color: black;
+    border-radius: 15px;
+    margin: 5px;
+    border: 2px solid grey;
+    padding: 10px;
+    box-shadow: 0px 5px 10px 5px grey inset;
+}
+.card:hover {
+    transform: scale(1.1);
+    transition: 1s;
+    opacity: 0.8;
+}
+.card-image img{
+    width: 80%;
+}
+#reservation-button{
+    color: white;
+    background-color: saddlebrown;
+    padding: 10px;
+}
+/* ------------------------------------------------------------------>footer */
+footer {
+    bottom: 0;
+    background-color: #1e1e1e;
+    height: auto;
+    width: 100%;
+}
+footer ul
+{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: silver 3px solid;
+  border-bottom: silver 3px solid;
+
+}
+.info
+{
+  color: white;
+  text-align: center;
+}
+.social
+{
+  display: inline-block;
+  text-align: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 15px;
+  font-size:32px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.social i{color: white;}
+.fb{background-color: dodgerblue;}
+.tw{background-color: aqua;}
+.gplus{background-color: orangered;}
+.gplus i{margin-right: 5px;}
+.yt{background-color: #f44336;}
+/*--------------------------------------------------------------------------------> loggin.php */
+body {font-family: Arial, Helvetica, sans-serif;}
+.fo {border: 3px solid #f1f1f1;border-radius: 50px;}
+.fo .container h1{color: white;}
+.fo .container p{color: white;}
+.containerlg
+{
+  background-color: rgb(98, 98, 98);
+  width: auto;
+  height: auto;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 30px;
+  border-radius: 50px;
+}
+input[type=text], input[type=password]
+{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid white;
+  box-sizing: border-box;
+}
+
+button
+{
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover
+{
+  opacity: 0.8;
+}
+.cancelbtn
+{
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+.cancelbtn a
+{
+  text-decoration: none;
+  color: white;
+}
+
+.imgcontainer
+{
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar
+{
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container
+{
+  padding: 16px;
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+
+}
+span.psw
+{
+  float: right;
+  padding-top: 16px;
+}
+/* ------------------------------------------> register.php */
+.error
+{
+  color: red;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+/* --------------------------------------------> profile.php */
+#change-passwd {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in;
+}
+
+#change-passwd.expanded
+{
+  max-height: 400px;
+}
+#change-address 
+{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in;
+}
+
+#change-address.expanded 
+{
+    max-height: 800px;
+}
+.profile
+{
+  margin-top: 50px;
+  text-align: center;
+  border: 3px solid white;
+  border-radius: 20%;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 500px;
+}
+.logoutbtn
+{
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+.booksEditorbtn {
+    width: 80%;
+    padding: 10px 18px;
+    background-color: rgb(186, 0, 223);
+}
+.s-psw
+{
+  padding: 10px;
+  width: 80%;
+}
+.usersbtn {
+    background-color: deepskyblue;
+    width: 80%;
+}
+.profileOrders {
+    margin: auto;
+    text-align: center;
+}
+.borderr{
+    border-bottom: 2px solid black;
+    margin-bottom: 30px;
+}
+/* ---------------------------------------> slider */
+.img-slider {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+.img-slider .slide
+{
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  clip-path: circle(0% at 0 70%);
+}
+
+.img-slider .slide.active
+{
+  clip-path: circle(150% at 0 50%);
+  transition: 2s;
+  transition-property: clip-path;
+}
+
+.img-slider .slide img
+{
+  z-index: 1;
+  width: 100%;
+  border-radius: 5px;
+  max-height: 410px;
+}
+
+.img-slider .slide .info
+{
+  position: absolute;
+  top: 0;
+  padding: 15px 30px;
+}
+
+.img-slider .slide .info h2
+{
+  color: #fff;
+  font-size: 45px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.img-slider .slide .info p
+{
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 30px;
+  border-radius: 4px;
+}
+
+.img-slider .navigation
+{
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.img-slider .navigation .btn
+{
+  background: rgba(255, 255, 255, 0.5);
+  width: 12px;
+  height: 12px;
+  margin: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.img-slider .navigation .btn.active
+{
+  background: #bb00e0;
+  border: 1px rgb(255, 255, 255) solid;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+/*--------------------------------------> basketCard */
+.basket_books{
+    border-bottom: 2px black solid;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+.basket_books img{
+    width: 140px;
+}
+#emptyBasket {
+    font-size: 20px;
+    text-align: center;
+    padding: 5%;
+    margin: 5%;
+}
+#basketSum {
+    font-size: 30px;
+    text-align: center;
+    margin: 10px;
+}
+
+.remove-button {
+    background-color: red;
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+}
+#goToSummary {
+    width: 300px;
+    margin-left: 45%;
+    background-color: rgb(98,179,176);
+    text-align: center;
+    padding: 20px;
+}
+/*--------------------------------------> orderSummary */
+.orderSummaryBooks {
+    text-align: center;
+}
+.orderSummaryBooks img {
+    width: 50px;
+    margin: 5px;
+}
+.pad {
+    padding: 20px;
+}
+#orderAddressHeader {
+    text-align: center;
+    font-size: 35px;
+}
+.orderAddress {
+    text-align: center;
+}
+/*--------------------------------------> orderStatus */
+.orderStatusContainer{
+    margin: auto;
+    width: 80%;
+}
+.orderStatusContainer p{
+    border-bottom: 2px black solid;
+}
+/*---------------------------------------> bookCard*/
+#bookinfo{
+    background-color: antiquewhite;
+}
+#title{
+    font-size: 40px;
+}
+#bookinfo table {
+    margin: auto;
+    margin-bottom: 0px;
+}
+.responsive-img {
+    width: auto;
+    height: auto;
+    margin: 30px;
+}
+
+#bookinfo {
+    color: black;
+}
+#addToCartButton {
+    background-color: sandybrown;
+    width: 300px;
+}
+/*------------------------------------------>OrderInfo*/
+#orderStatusInfo {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 20px;
+}
