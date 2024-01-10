@@ -1,0 +1,32 @@
+﻿<nav class="topnav" id="myTopnav">
+    <ul>
+        <li class="btnn">
+            <a href="javascript:void(0);" onclick="myFunction2()">Kategorie<i class="icon-down-open iconn"></i></a>
+            <ul id="btn-content">
+                <li>@Html.ActionLink("Science Fiction", "CategoryCard", "Category", new { category = "Science_Fiction" }, null)</li>
+                <li>@Html.ActionLink("Fantasy", "CategoryCard", "Category", new { category = "Fantasy" }, null)</li>
+                <li>@Html.ActionLink("Kryminał", "CategoryCard", "Category", new { category = "Kryminal" }, null)</li>
+                <li>@Html.ActionLink("Romans", "CategoryCard", "Category", new { category = "Romans" }, null)</li>
+                <li>@Html.ActionLink("Dla dzieci", "CategoryCard", "Category", new { category = "Dla_dzieci" }, null)</li>
+                <li>@Html.ActionLink("Nauka", "CategoryCard", "Category", new { category = "Nauka" }, null)</li>
+                <li>@Html.ActionLink("Przygodowe", "CategoryCard", "Category", new { category = "Przygodowe" }, null)</li>
+                <li>@Html.ActionLink("Thriller", "CategoryCard", "Category", new { category = "Thriller" }, null)</li>
+                <li>@Html.ActionLink("Horror", "CategoryCard", "Category", new { category = "Horror" }, null)</li>
+                <li>@Html.ActionLink("Biografia", "CategoryCard", "Category", new { category = "Biografia" }, null)</li>
+            </ul>
+        </li>
+        <li>@Html.ActionLink("Nowości", "Index", "Home")</li>
+        <li>@Html.ActionLink("Zamówienie", "OrderStatus", "Home")</li>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <li class="log-btn">@Html.ActionLink("zaloguj się", "LogIn", "Account")</li>
+        }
+        else
+        {
+            <li class="log-btn">@Html.ActionLink(User.Identity.Name, "UserProfile", "Account")</li>
+        }
+    </ul>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="icon-menu"></i>
+    </a>
+</nav>
