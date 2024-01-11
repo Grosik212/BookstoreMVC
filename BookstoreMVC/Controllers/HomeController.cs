@@ -1,26 +1,26 @@
 ﻿using BookStore.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace BookStore.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly BookstoreContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(BookstoreContext context)
         {
-            _logger = logger;
+            _context = context;
         }
-
         public IActionResult Index()
-        {
-            return View();
-        }
 
-        public IActionResult Privacy()
         {
-            return View();
+            
+            var books = _context.Books.ToList();
+
+            return View(books);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

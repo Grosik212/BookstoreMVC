@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using BookStore.MVC.Models;
 
 
 public class BookstoreContext : DbContext
@@ -11,10 +12,8 @@ public class BookstoreContext : DbContext
     public DbSet<Address> Addresses { get; set; }
     public DbSet<OldAddress> OldAddresses { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public BookstoreContext(DbContextOptions<BookstoreContext> options) : base(options)
     {
-        
-        optionsBuilder.UseSqlite("Data Source=bookstore.db");
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<Book>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -11,21 +13,22 @@
         <section class="index_news">
             <h1>Książki</h1>
             <div class="row" id="template-body">
-                <template id="car-template">
+                @foreach (var book in Model)
+                {
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-image">
-                                <img src="~/img/books/Kwazar.png" class="responsive-img" id="template-preview-image" alt="Książka">
+                                <img src="@book.Img" class="responsive-img" id="template-preview-image" alt="Książka">
                             </div>
                             <div class="card-content grey darken-4">
-                                <p class="white-text height1" id="template-description">Tutaj ma być opis samochodu</p>
+                                <p class="white-text height1" id="template-description">@book.Title</p>
                             </div>
                             <div class="card-action orange darken-3" style="text-align: center !important;">
                                 <a href="elements/bookCard.php" id="reservation-button" style="text-decoration: none;">Szczegóły</a>
                             </div>
                         </div>
                     </div>
-                </template>
+                }
             </div>
         </section>
     </main>
