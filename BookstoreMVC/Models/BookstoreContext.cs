@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using BookStore.MVC.Models;
 
 
+
 public class BookstoreContext : DbContext
 {
     public DbSet<Book> Books { get; set; }

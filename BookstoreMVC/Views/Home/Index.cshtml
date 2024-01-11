@@ -18,13 +18,16 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-image">
-                                <img src="@book.Img" class="responsive-img" id="template-preview-image" alt="Książka">
+                                <img src="@Url.Content($"~/{book.Img}")" class="responsive-img" id="template-preview-image" alt="Książka">
+
                             </div>
                             <div class="card-content grey darken-4">
                                 <p class="white-text height1" id="template-description">@book.Title</p>
                             </div>
                             <div class="card-action orange darken-3" style="text-align: center !important;">
-                                <a href="elements/bookCard.php" id="reservation-button" style="text-decoration: none;">Szczegóły</a>
+                                <a href="@Url.Action("BookCard", new { id = book.Id })" id="reservation-button" style="text-decoration: none;">Szczegóły</a>
+
+
                             </div>
                         </div>
                     </div>

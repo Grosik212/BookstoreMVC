@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Czytelno</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style.resposive.css">
-    <link rel="stylesheet" href="fontello/css/fontello.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/style.responsive.css">
+    <link rel="stylesheet" href="~/css/fontello/css/fontello.css" type="text/css" />
 
 </head>
 <body>
@@ -43,7 +43,8 @@
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="database/dataBaseManager.js"></script>
         <script src="js/indexContent.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        @RenderSection("scripts", required: false)
+
 </body>
 <footer>
     <div class="info">Social Links</div>

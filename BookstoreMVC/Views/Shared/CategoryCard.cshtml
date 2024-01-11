@@ -1,0 +1,38 @@
+﻿@model List<Book>
+
+@{
+    ViewData["Title"] = "Category Card";
+    Layout = "_Layout";
+}
+
+<div class="container" id="category-info">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="grey-text">Kategoria: @ViewData["CategoryName"]</h1>
+        </div>
+    </div>
+    <div class="row" id="category-body">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="@Url.Content($"~/{book.Img}")" class="responsive-img" id="category-preview-image" alt="Książka">
+                    </div>
+                    <div class="card-content grey darken-4">
+                        <p class="white-text height1" id="category-description">@book.Title</p>
+                    </div>
+                    <div class="card-action orange darken-3" style="text-align: center !important;">
+                        <a href="@Url.Action("BookCard", new { id = book.Id })" id="category-reservation-button" style="text-decoration: none;">Szczegóły</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="~/database/dataBaseManager.js"></script>
+    <script src="~/js/categoryCardContent.js"></script>
+}

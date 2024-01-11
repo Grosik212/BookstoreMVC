@@ -3,27 +3,27 @@
         <li class="btnn">
             <a href="javascript:void(0);" onclick="myFunction2()">Kategorie<i class="icon-down-open iconn"></i></a>
             <ul id="btn-content">
-                <li>@Html.ActionLink("Science Fiction", "CategoryCard", "Category", new { category = "Science_Fiction" }, null)</li>
-                <li>@Html.ActionLink("Fantasy", "CategoryCard", "Category", new { category = "Fantasy" }, null)</li>
-                <li>@Html.ActionLink("Kryminał", "CategoryCard", "Category", new { category = "Kryminal" }, null)</li>
-                <li>@Html.ActionLink("Romans", "CategoryCard", "Category", new { category = "Romans" }, null)</li>
-                <li>@Html.ActionLink("Dla dzieci", "CategoryCard", "Category", new { category = "Dla_dzieci" }, null)</li>
-                <li>@Html.ActionLink("Nauka", "CategoryCard", "Category", new { category = "Nauka" }, null)</li>
-                <li>@Html.ActionLink("Przygodowe", "CategoryCard", "Category", new { category = "Przygodowe" }, null)</li>
-                <li>@Html.ActionLink("Thriller", "CategoryCard", "Category", new { category = "Thriller" }, null)</li>
-                <li>@Html.ActionLink("Horror", "CategoryCard", "Category", new { category = "Horror" }, null)</li>
-                <li>@Html.ActionLink("Biografia", "CategoryCard", "Category", new { category = "Biografia" }, null)</li>
+                <li><a href="@Url.Action("CategoryCard", "Home", new { categoryName = "Science Fiction" })">Science Fiction</a></li>
+                <li><a href="@Url.Action("CategoryCard", "Home", new { categoryName = "Fantasy" })">Fantasy</a></li>
+                <li><a href="@Url.Action("CategoryCard", "Home", new { categoryName = "Kryminał" })">Kryminał</a></li>
+                <li><a href="@Url.Action("CategoryCard", "Home", new { categoryName = "Romans" })">Romans</a></li>
+                <li><a href="@Url.Action("CategoryCard", "Home", new { categoryName = "Dla dzieci" })">Dla dzieci</a></li>
+                <li><a href="@Url.Action("CategoryCard", "Home", new { categoryName = "Nauka" })">Nauka</a></li>
+                <li><a href="@Url.Action("CategoryCard", "Home", new { categoryName = "Przygodowe" })">Przygodowe</a></li>
+                <li><a href="@Url.Action("CategoryCard", "Home", new { categoryName = "Thriller" })">Thriller</a></li>
+                <li><a href="@Url.Action("CategoryCard", "Home", new { categoryName = "Horror" })">Horror</a></li>
+                <li><a href="@Url.Action("CategoryCard", "Home", new { categoryName = "Biografia" })">Biografia</a></li>
             </ul>
         </li>
-        <li>@Html.ActionLink("Nowości", "Index", "Home")</li>
-        <li>@Html.ActionLink("Zamówienie", "OrderStatus", "Home")</li>
+        <li><a href="@Url.Action("Index", "Home")">Nowości</a></li>
+        <li><a href="@Url.Action("OrderStatus", "Home")">Zamówienie</a></li>
         @if (!User.Identity.IsAuthenticated)
         {
-            <li class="log-btn">@Html.ActionLink("zaloguj się", "LogIn", "Account")</li>
+            <li class="log-btn"><a href="@Url.Action("LogIn", "Account")">zaloguj się</a></li>
         }
         else
         {
-            <li class="log-btn">@Html.ActionLink(User.Identity.Name, "UserProfile", "Account")</li>
+            <li class="log-btn"><a href="@Url.Action("UserProfile", "Account")">@User.Identity.Name</a></li>
         }
     </ul>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">

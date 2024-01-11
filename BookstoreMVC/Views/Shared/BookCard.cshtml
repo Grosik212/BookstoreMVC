@@ -1,0 +1,37 @@
+﻿@model Book
+
+@{
+    ViewData["Title"] = "Book Card";
+}
+
+
+<div class="container" id="bookinfo">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="grey-text" id="title">@Model.Title</h3>
+            <div class="col-md-6 offset-md-3">
+                <img src="@Url.Content($"~/{Model.Img}")" class="responsive-img" id="miniatureImg">
+            </div>
+            <table>
+                <tr>
+                    <td class="flow-text grey-text" id="author">Autor: @Model.Author</td>
+                    <td class="flow-text grey-text" id="year">Data wydania: @Model.Year</td>
+                </tr>
+                <tr>
+                    <td class="flow-text grey-text" id="publisher">Wydawnictwo: @Model.Publisher</td>
+                    <td class="flow-text grey-text" id="pages">Liczba stron: @Model.Pages</td>
+                </tr>
+                <tr>
+                    <td class="flow-text grey-text" id="category">Kategoria: @Model.Category</td>
+                    <td class="flow-text grey-text" id="price">Cena: @Model.Price</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row description">
+        <div class="col-md-12">
+            <h3 class="grey-text">Opis książki:</h3>
+            <p class="flow-text grey-text" id="description">@Model.Description</p>
+        </div>
+    </div>
+</div>
