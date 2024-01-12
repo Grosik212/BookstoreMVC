@@ -1,0 +1,51 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Czytelno</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/style.responsive.css">
+    <link rel="stylesheet" href="~/css/fontello/css/fontello.css" type="text/css" />
+</head>
+<body id="pix">
+    <div class="containerlg">
+        <form class="fo" method="post">
+            <div class="imgcontainer">
+                <img src="~/img/user_avatar.png" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label><b>Twój nick:</b></label>
+                <input type="text" placeholder="Wpisz nick" name="login" required>
+
+                <label><b>Hasło:</b></label>
+                <input type="password" placeholder="Wpisz hasło" name="password" required>
+
+                <button type="submit">Zaloguj</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Zapamiętaj mnie
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button class="cancelbtn" onclick="window.location.href='../index.php'">Cancel</button>
+                <span class="psw">Nie posiadasz konta?  <a href="Register">Zarejestruj się</a></span>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

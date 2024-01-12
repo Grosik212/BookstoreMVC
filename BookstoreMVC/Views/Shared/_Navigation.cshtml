@@ -1,4 +1,8 @@
-﻿<nav class="topnav" id="myTopnav">
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<nav class="topnav" id="myTopnav">
     <ul>
         <li class="btnn">
             <a href="javascript:void(0);" onclick="myFunction2()">Kategorie<i class="icon-down-open iconn"></i></a>
@@ -17,13 +21,20 @@
         </li>
         <li><a href="@Url.Action("Index", "Home")">Nowości</a></li>
         <li><a href="@Url.Action("OrderStatus", "Home")">Zamówienie</a></li>
-        @if (!User.Identity.IsAuthenticated)
+        @if (SignInManager.IsSignedIn(User))
         {
-            <li class="log-btn"><a href="@Url.Action("LogIn", "Account")">zaloguj się</a></li>
+            <li class="log-btn">
+                <a href="@Url.Action("Manage", "Account")">Hello @UserManager.GetUserName(User)!</a>
+            </li>
+            <li class="log-btn">
+                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
+                </form>
+            </li>
         }
         else
         {
-            <li class="log-btn"><a href="@Url.Action("UserProfile", "Account")">@User.Identity.Name</a></li>
+            <li class="log-btn"><a href="/Identity/Account/Login">zaloguj się</a></li>
         }
     </ul>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
