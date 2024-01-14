@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Humanizer.Localisation;
 
 namespace BookstoreMVC.Areas.Identity.Pages.Account
 {
@@ -117,19 +118,20 @@ namespace BookstoreMVC.Areas.Identity.Pages.Account
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
-                }
                 else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
+        {
+                    // Tutaj dodajemy logowanie diagnostyczne
+                    _logger.LogWarning("User login failed. Email: {Email}, IP: {IPAddress}", Input.Email, HttpContext.Connection.RemoteIpAddress);
+
+                    // Dodaj odpowiednie komunikaty do ModelState
+                    if (result.IsLockedOut)
+                    {
+                        ModelState.AddModelError(string.Empty, "Konto zablokowane.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Nieudana próba logowania. Sprawdź e-mail i hasło.");
+                    }
                 }
             }
 

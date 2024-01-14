@@ -23,35 +23,35 @@
             <p>Wypełnij formularz aby utworzyć konto</p>
             <hr>
 
-            <label for="firstName"><b>Imię</b></label>
-            <input type="text" placeholder="Wpisz imię" name="firstName" id="firstName" required>
+            <label for="FirstName"><b>Imię</b></label>
+            <input type="text" placeholder="Wpisz imię" name="FirstName" id="FirstName" required>
 
-            <label for="lastName"><b>Nazwisko</b></label>
-            <input type="text" placeholder="Wpisz nazwisko" name="lastName" id="lastName" required>
+            <label for="LastName"><b>Nazwisko</b></label>
+            <input type="text" placeholder="Wpisz nazwisko" name="LastName" id="LastName" required>
 
             <label for="nick"><b>Nick</b></label>
-            <input type="text" placeholder="Wpisz nick" name="nick" id="nick" required>
+            <input type="text" placeholder="Wpisz nick" name="Nick" id="Nick" required>
             @if (ViewData["e_nick"] != null)
             {
                 <div class="error">@ViewData["e_nick"]</div>
             }
 
-            <label for="email"><b>E-mail</b></label>
-            <input type="text" placeholder="Wpisz e-mail" name="email" id="email" required>
+            <label for="Email"><b>E-mail</b></label>
+            <input type="text" placeholder="Wpisz e-mail" name="Email" id="Email" required>
             @if (ViewData["e_email"] != null)
             {
                 <div class="error">@ViewData["e_email"]</div>
             }
 
-            <label for="psw1"><b>Hasło</b></label>
-            <input type="password" placeholder="Wpisz hasło" name="psw1" id="psw1" required>
+            <label for="Password"><b>Hasło</b></label>
+            <input type="password" placeholder="Wpisz hasło" name="Password" id="Password" required>
             @if (ViewData["e_haslo"] != null)
             {
                 <div class="error">@ViewData["e_haslo"]</div>
             }
 
-            <label for="psw2"><b>Powtórz hasło</b></label>
-            <input type="password" placeholder="Powtórz hasło" name="psw2" id="psw2" required>
+            <label for="ConfirmPassword"><b>Powtórz hasło</b></label>
+            <input type="password" placeholder="Powtórz hasło" name="ConfirmPassword" id="ConfirmPassword" required>
             <hr>
 
             <label><input type="checkbox" name="regulamin" /> Akceptuje regulamin</label>
@@ -67,6 +67,7 @@
             <p>Posiadasz już konto? <a href="Login">Zaloguj się</a></p>
         </div>
     </form>
+    <div asp-validation-summary="All" class="text-danger"></div>
 </body>
 </html>
 

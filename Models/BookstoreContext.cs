@@ -19,8 +19,6 @@ public class BookstoreContext : IdentityDbContext<User>
     {
         base.OnModelCreating(modelBuilder);
 
- 
-        modelBuilder.Entity<User>().ToTable("users");
         modelBuilder.Entity<Book>().ToTable("books");
         modelBuilder.Entity<Order>().ToTable("orders");
         modelBuilder.Entity<OrderItem>().ToTable("order_items");

@@ -18,17 +18,17 @@
 </head>
 <body id="pix">
     <div class="containerlg">
-        <form class="fo" method="post">
+        <form asp-antiforgery="true" class="fo" method="post">
             <div class="imgcontainer">
                 <img src="~/img/user_avatar.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
-                <label><b>Twój nick:</b></label>
-                <input type="text" placeholder="Wpisz nick" name="login" required>
+                <label><b>Twój E-mail:</b></label>
+                <input type="text" placeholder="Wpisz e-mail" name="Email" required>
 
                 <label><b>Hasło:</b></label>
-                <input type="password" placeholder="Wpisz hasło" name="password" required>
+                <input type="password" placeholder="Wpisz hasło" name="Password" required>
 
                 <button type="submit">Zaloguj</button>
                 <label>
@@ -41,6 +41,17 @@
                 <span class="psw">Nie posiadasz konta?  <a href="Register">Zarejestruj się</a></span>
             </div>
         </form>
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
     </div>
 </body>
 </html>
