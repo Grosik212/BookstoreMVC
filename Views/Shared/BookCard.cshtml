@@ -4,7 +4,6 @@
     ViewData["Title"] = "Book Card";
 }
 
-
 <div class="container" id="bookinfo">
     <div class="row">
         <div class="col-md-12">
@@ -26,6 +25,12 @@
                     <td class="flow-text grey-text" id="price">Cena: @Model.Price</td>
                 </tr>
             </table>
+
+            <!-- Dodaj warunek sprawdzający, czy zalogowany użytkownik ma określony nick -->
+            @if (User.Identity.Name == "admin@czytelno.com")
+            {
+                <a href="@Url.Action("Edit", "Book", new { id = Model.Id })" class="btn btn-primary">Edytuj</a>
+            }
         </div>
     </div>
     <div class="row description">

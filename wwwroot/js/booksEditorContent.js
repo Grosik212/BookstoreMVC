@@ -17,7 +17,8 @@ async function drawContent() {
 
         instanceImage.src = "../" + response[i]['img'];
         instanceDesc.innerText = response[i]['title'];
-        reservationButton.href = "bookEditor.php?id=" + response[i]["id"];
+        reservationButton.href = `/Edit/${response[i]["id"]}`;
+
 
         tbody.appendChild(instance);
     }

@@ -10,8 +10,7 @@ function GET() {
 GET();
 
 async function displayDetails() {
-	if ($_GET['id'] == undefined)
-		window.location = "index.php";
+	
 	let id = $_GET['id'] - 1;
 
 	let response = await getBookInfoArray();

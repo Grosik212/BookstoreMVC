@@ -27,6 +27,11 @@ app.UseRouting();
 app.MapRazorPages();
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    name: "bookEdit",
+    pattern: "Edit/{id?}",
+    defaults: new { controller = "Book", action = "Edit" });
+
 
 app.MapControllerRoute(
     name: "bookcard",

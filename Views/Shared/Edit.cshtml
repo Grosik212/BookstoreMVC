@@ -1,0 +1,68 @@
+﻿@model Book
+
+<div class="row">
+    <form method="post" action="@Url.Action("Edit")">
+
+        <div class="form-group">
+            <label asp-for="Category">Category</label>
+            <input asp-for="Category" class="form-control" required />
+            <span asp-validation-for="Category"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Title">Title</label>
+            <input asp-for="Title" class="form-control" required />
+            <span asp-validation-for="Title"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Author">Author</label>
+            <input asp-for="Author" class="form-control" required />
+            <span asp-validation-for="Author"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Publisher">Publisher</label>
+            <input asp-for="Publisher" class="form-control" required />
+            <span asp-validation-for="Publisher"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Year">Year</label>
+            <input asp-for="Year" type="number" class="form-control" required />
+            <span asp-validation-for="Year"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Pages">Pages</label>
+            <input asp-for="Pages" type="number" class="form-control" required />
+            <span asp-validation-for="Pages"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Price">Price</label>
+            <input asp-for="Price" type="number" class="form-control" required />
+            <span asp-validation-for="Price"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description">Description</label>
+            <textarea asp-for="Description" class="form-control" required></textarea>
+            <span asp-validation-for="Description"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Img">Img</label>
+            <input asp-for="Img" class="form-control" required />
+            <span asp-validation-for="Img"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Edytuj</button>
+    </form>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Powrót</a>
+</div>
+
+@section Scripts {
+    <script src="~/database/dataBaseManager.js"></script>
+    <script src="~/js/DisplayBookDetailsInEditor.js"></script>
+}
