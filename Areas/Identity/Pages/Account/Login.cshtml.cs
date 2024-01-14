@@ -131,7 +131,27 @@ namespace BookstoreMVC.Areas.Identity.Pages.Account
                     else
                     {
                         ModelState.AddModelError(string.Empty, "Nieudana próba logowania. Sprawdź e-mail i hasło.");
+                       
+
+                        // Dodajmy bardziej szczegółowe informacje, jeśli chodzi o niepoprawne hasło
+                        if (result.IsNotAllowed)
+                        {
+                            ModelState.AddModelError(string.Empty, "Logowanie nie jest dozwolone dla tego konta.");
+                        }
+                        else if (result.RequiresTwoFactor)
+                        {
+                            ModelState.AddModelError(string.Empty, "Wymagane jest uwierzytelnienie dwuskładnikowe.");
+                        }
+                        else if (result.IsNotAllowed)
+                        {
+                            ModelState.AddModelError(string.Empty, "Logowanie nie jest dozwolone dla tego konta.");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError(string.Empty, "Nieudane logowanie. Sprawdź e-mail i hasło.");
+                        }
                     }
+                        
                 }
             }
 

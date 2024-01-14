@@ -142,7 +142,7 @@ namespace BookstoreMVC.Areas.Identity.Pages.Account
                     // Tutaj logika dotycząca potwierdzenia emaila, jeśli jest potrzebna
 
                     // Przekierowanie do strony logowania
-                    return LocalRedirect(Url.Content("~/Login"));
+                    return LocalRedirect("~/Identity/Account/Login");
                 }
 
                 foreach (var error in result.Errors)
