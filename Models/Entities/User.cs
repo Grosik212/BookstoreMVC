@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class User : IdentityUser
 {
+
     public string Nick { get; set; }
 
     public string FirstName { get; set; }

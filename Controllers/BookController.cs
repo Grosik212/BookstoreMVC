@@ -6,6 +6,10 @@ using System.Linq;
 using BookstoreMVC.Models.Entities;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System;
 
 public class BookController : Controller
 {
@@ -131,6 +135,43 @@ public class BookController : Controller
 
         return View(newBook);
     }
+    [HttpPost]
+    public async Task<IActionResult> PrzetworzZamowienie()
+    {
+
+        string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (userId == null)
+        {
+            // Dodatkowe zabezpieczenie na wypadek, gdyby użytkownik został wylogowany w momencie przetwarzania żądania
+            return RedirectToAction("Login", "Identity Account");
+        }
+        var koszyk = HttpContext.Session.GetString("Koszyk") != null
+            ? JsonSerializer.Deserialize<Koszyk>(HttpContext.Session.GetString("Koszyk"))
+            : null;
+
+        if (koszyk == null || !koszyk.Pozycje.Any())
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        var zamowienie = new Order
+        {
+            UserId = userId,
+            Price = koszyk.CenaCalkowitaKoszyka,
+            Date = DateTime.Now,
+            Status = "oczekujący",
+            // inne właściwości zamówienia
+        };
+
+        _context.Orders.Add(zamowienie);
+        await _context.SaveChangesAsync();
+
+        HttpContext.Session.Remove("Koszyk");
+
+        return RedirectToAction("Index", "Home");
+    }
+
 
     private bool BookExists(int id)
     {

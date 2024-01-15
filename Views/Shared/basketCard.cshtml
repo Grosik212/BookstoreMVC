@@ -52,9 +52,10 @@
                 }
 
                 <p id="basketSum">Suma: @koszyk.CenaCalkowitaKoszyka zł</p>
-                <div class="button_card">
-                    <button id="goToSummary">Przejdź do Podsumowania</button>
-                </div>
+            <form asp-controller="Book" asp-action="PrzetworzZamowienie" method="post">
+                    <button type="submit">Zamów</button>
+                </form>
+
             }
             else
             {
