@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "Czytelno";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@inject IHttpContextAccessor HttpContextAccessor
+@using System.Text.Json
+@using BookstoreMVC.Models.Entities
+<!doctype html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+        <link rel="stylesheet" href="~/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/css/style.css">
+        <link rel="stylesheet" href="~/css/style.resposive.css">
+    </head>
+    <body>
+        @{
+        var sessionKoszyk = HttpContextAccessor.HttpContext.Session.GetString("Koszyk");
+        if (!string.IsNullOrEmpty(sessionKoszyk))
+            {
+                var koszyk = JsonSerializer.Deserialize<Koszyk>(sessionKoszyk);
+                decimal suma = 0;
+            foreach (var ksiazka in koszyk.Pozycje)
+                {
+                    <div class="basket_books">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="@Url.Content("~/"+ ksiazka.Img)" alt="Obraz">
+                            </div>
+                            <div class="col-md-2 center">
+                            <p>@ksiazka.Tytul</p>
+                            </div>
+                            <div class="col-md-2 center">
+                                <p>@ksiazka.Ilosc</p>
+                            </div>
+                            <div class="col-md-2 center">
+                                <p>@(ksiazka.Ilosc * ksiazka.Cena) zł</p>
+                            </div>
+                            <div class="col-md-2 center">
+                                <button class="remove-button" data-book-id="@ksiazka.Cena">X</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <p id="basketSum">Suma: @koszyk.CenaCalkowitaKoszyka zł</p>
+                <div class="button_card">
+                    <button id="goToSummary">Przejdź do Podsumowania</button>
+                </div>
+            }
+            else
+            {
+                <p id="emptyBasket">Koszyk jest pusty!</p>
+            }
+        }
+
+        <script src="../js/removeBookFromCart.js"></script>
+    </body>
+</html>

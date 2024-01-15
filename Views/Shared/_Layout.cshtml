@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using System.Text.Json
+@using BookstoreMVC.Models
+@using BookstoreMVC.Models.Entities
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="utf-8" />
@@ -13,18 +17,38 @@
 <body>
     <header>
     <div class="row">
-        <div class="logo col-sm-12 col-md-6">
+        <div class="logo col-sm-12 col-md-3">
             <div class="bookStoreLogo"><a asp-controller="Home" asp-action="Index"><img src="/img/logo.png" width="70" height="70" alt="bookStoreLogo"></a></div>
             <div class="bookStoreName"><a asp-controller="Home" asp-action="Index">Czytelno</a></div>
         </div>
-        <div class="logoo col-sm-12 col-md-6">
+        <div class="logoo col-sm-8 col-md-8">
             <div class="cytat col-sm-9">
                 <div id="quote1">Czytaj...</div>
                 <div id="quote2">Odkrywaj...</div>
                 <div id="quote3">Analizuj...</div>
             </div>
         </div>
-    </div>
+            <div class="col-sm-1 col-md-1 dropdown">
+                <img src="/img/basket.png" class="dropbtn" width="70" height="70" alt="koszyk">
+                <div class="dropdown-content" style="left:0;">
+                    @{
+                        var sessionKoszyk = HttpContextAccessor.HttpContext.Session.GetString("Koszyk");
+                        if (!string.IsNullOrEmpty(sessionKoszyk))
+                        {
+                            var koszyk = JsonSerializer.Deserialize<Koszyk>(sessionKoszyk);
+                            foreach (var ksiazka in koszyk.Pozycje)
+                            {
+                                <a href="#">Tytuł: @ksiazka.Tytul<br> Ilość: @ksiazka.Ilosc <br>Cena: @ksiazka.Cena zł</a>
+                            }
+                            <div style="text-align: center;">Cena całkowita: @koszyk.CenaCalkowitaKoszyka zł</div>
+                        }
+
+                    }
+                    <p id="goToBasket"><a href="@Url.Action("basketCard", "Home", new { categoryName = "Biografia" })">Biografia</a></p>
+                </div>
+            </div>
+
+        </div>
 
         @await Html.PartialAsync("_Navigation")
         

@@ -32,6 +32,10 @@
                 <a href="@Url.Action("Edit", "Book", new { id = Model.Id })" class="btn btn-primary">Edytuj</a>
             }
         </div>
+        <form asp-controller="Book" asp-action="DodajDoKoszyka" method="post">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button type="submit" class="btn btn-primary">Dodaj do koszyka</button>
+        </form>
     </div>
     <div class="row description">
         <div class="col-md-12">

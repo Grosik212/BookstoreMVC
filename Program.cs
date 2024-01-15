@@ -1,14 +1,28 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Konfiguracja sesji
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Ustaw timeout sesji
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+// Konfiguracja bazy danych
 builder.Services.AddDbContext<BookstoreContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<BookstoreContext>();
+// Konfiguracja Identity
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<BookstoreContext>();
 
 var app = builder.Build();
 
@@ -24,14 +38,19 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.MapRazorPages();
+
+app.UseSession(); // Umieœæ to po UseRouting, ale przed UseEndpoints
+
+app.UseAuthentication(); // Upewnij siê, ¿e jest to przed UseAuthorization
 app.UseAuthorization();
 
+app.MapRazorPages();
+
+// Mapowanie tras kontrolera
 app.MapControllerRoute(
     name: "bookEdit",
     pattern: "Edit/{id?}",
     defaults: new { controller = "Book", action = "Edit" });
-
 
 app.MapControllerRoute(
     name: "bookcard",
