@@ -99,6 +99,20 @@ public class BookController : Controller
         return RedirectToAction("Index", "Home");
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult AddBook(Book newBook)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.Books.Add(newBook);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+
+        return View(newBook);
+    }
+
     private bool BookExists(int id)
     {
         return _context.Books.Any(e => e.Id == id);

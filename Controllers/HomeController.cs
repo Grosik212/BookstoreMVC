@@ -58,5 +58,10 @@ namespace BookStore.MVC.Controllers
         {
             return View();
         }
+
+        public IActionResult AddBook()
+        {
+            return View();
+        }
     }
 }

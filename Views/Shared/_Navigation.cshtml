@@ -21,6 +21,12 @@
         </li>
         <li><a href="@Url.Action("Index", "Home")">Nowości</a></li>
         <li><a href="@Url.Action("OrderStatus", "Home")">Zamówienie</a></li>
+        @if (User.Identity.Name == "admin@czytelno.com")
+{
+    <li>
+        <a asp-area="" asp-controller="Home" asp-action="AddBook">Dodaj Książkę</a>
+    </li>
+}
         @if (SignInManager.IsSignedIn(User))
         {
             <li class="log-btn">
