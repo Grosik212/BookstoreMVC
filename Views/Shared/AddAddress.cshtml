@@ -1,6 +1,11 @@
 ﻿@model Address
 
-<div class="row">
+@{
+    ViewData["Title"] = "Dodaj adres";
+}
+
+<h2>Dodaj adres</h2>
+
     <form method="post" asp-action="AddAddress" asp-controller="Address">
 
         <div class="form-group">
@@ -30,4 +35,3 @@
         <button type="submit" class="btn btn-primary">Dodaj adres</button>
     </form>
     <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Powrót</a>
-</div>
