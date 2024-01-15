@@ -1,31 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 using BookStore.MVC.Models;
-using System.Linq;
 
 public class BookController : Controller
 {
-    private readonly IConfiguration _configuration;
     private readonly BookstoreContext _context;
 
-    public BookController(IConfiguration configuration, BookstoreContext context)
+    public BookController(BookstoreContext context)
     {
-        _configuration = configuration;
         _context = context;
     }
 
-    [HttpGet]
-    public IActionResult Edit(int id)
+    public async Task<IActionResult> Edit(int? id)
     {
-        Book book = _context.Books.Find(id);
+        if (id == null)
+        {
+            return NotFound();
+        }
 
+        var book = await _context.Books.FindAsync(id);
         if (book == null)
         {
             return NotFound();
         }
 
-        return View("Edit",book);
+        return View(book);
     }
 
     [HttpPost]
@@ -43,23 +43,34 @@ public class BookController : Controller
             {
                 _context.Entry(updatedBook).State = EntityState.Modified;
                 _context.SaveChanges();
+                return RedirectToAction("Index", "Home");
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateException)
             {
-                if (!BookExists(updatedBook.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists, " +
+                    "see your system administrator.");
             }
-
-            return RedirectToAction("Index", "Home");
         }
 
+        // Jeśli ModelState.IsValid jest false, wróć do widoku edycji z błędami walidacji
         return View(updatedBook);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Delete(int id)
+    {
+        var book = _context.Books.Find(id);
+        if (book == null)
+        {
+            return NotFound();
+        }
+
+        _context.Books.Remove(book);
+        _context.SaveChanges();
+
+        return RedirectToAction("Index", "Home");
     }
 
     private bool BookExists(int id)
