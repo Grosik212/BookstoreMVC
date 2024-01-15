@@ -5,6 +5,7 @@ using BookStore.MVC.Models;
 using System.Linq;
 using BookstoreMVC.Models.Entities;
 using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 
 public class BookController : Controller
 {
@@ -81,6 +82,24 @@ public class BookController : Controller
 
         return RedirectToAction(nameof(Index), "Home");
     }
+
+    [HttpPost]
+    public IActionResult UsunZKoszyka(int bookId)
+    {
+        var koszyk = HttpContext.Session.GetString("Koszyk") != null
+            ? JsonSerializer.Deserialize<Koszyk>(HttpContext.Session.GetString("Koszyk"))
+            : new Koszyk();
+
+        koszyk.UsunZKoszyka(bookId);
+
+        HttpContext.Session.SetString("Koszyk", JsonSerializer.Serialize(koszyk));
+
+        return RedirectToAction(nameof(Index), "Home");
+    }
+
+
+
+
 
 
     [HttpPost]

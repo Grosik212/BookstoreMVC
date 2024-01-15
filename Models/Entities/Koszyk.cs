@@ -19,7 +19,16 @@
             }
             else
             {
-                Pozycje.Add(new PozycjaKoszyka(book.Title, book.Price));
+                Pozycje.Add(new PozycjaKoszyka(book.Title, book.Price, book.Img));
+            }
+        }
+
+        public void UsunZKoszyka(int bookId)
+        {
+            var pozycjaDoUsuniecia = Pozycje.FirstOrDefault(p => p.Id == bookId);
+            if (pozycjaDoUsuniecia != null)
+            {
+                Pozycje.Remove(pozycjaDoUsuniecia);
             }
         }
 

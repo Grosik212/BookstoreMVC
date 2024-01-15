@@ -44,7 +44,7 @@
                         }
 
                     }
-                    <p id="goToBasket"><a href="@Url.Action("basketCard", "Home", new { categoryName = "Biografia" })">Biografia</a></p>
+                    <p id="goToBasket"><a href="@Url.Action("basketCard", "Home")">Przejdź do koszyka</a></p>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
         <script src="database/dataBaseManager.js"></script>
         <script src="js/indexContent.js"></script>
         @RenderSection("scripts", required: false)
-
+    </div>
 </body>
 <footer>
     <div class="info">Social Links</div>

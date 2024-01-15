@@ -2,6 +2,7 @@
 {
     public class PozycjaKoszyka
     {
+        public int Id { get; set; }
         public string Tytul { get; set; }
         public double Cena { get; set; }
         public int Ilosc { get; set; }
@@ -13,7 +14,7 @@
             get { return Cena * Ilosc; }
         }
 
-        public PozycjaKoszyka(string tytul, double cena, int ilosc = 1, string img = null)
+        public PozycjaKoszyka(string tytul, double cena, string img, int ilosc = 1)
         {
             Tytul = tytul;
             Cena = cena;

@@ -1,11 +1,15 @@
+
 @{
     ViewData["Title"] = "Czytelno";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 @inject IHttpContextAccessor HttpContextAccessor
+@inject IAntiforgery Antiforgery
+
 @using System.Text.Json
 @using BookstoreMVC.Models.Entities
+@using Microsoft.AspNetCore.Antiforgery
 <!doctype html>
 <html lang="pl">
     <head>
@@ -28,7 +32,7 @@
                     <div class="basket_books">
                         <div class="row">
                             <div class="col-md-3">
-                                <img src="@Url.Content("~/"+ ksiazka.Img)" alt="Obraz">
+                            <img src="@Url.Content($"~/{ksiazka.Img}")" alt="Obraz">
                             </div>
                             <div class="col-md-2 center">
                             <p>@ksiazka.Tytul</p>
@@ -39,9 +43,10 @@
                             <div class="col-md-2 center">
                                 <p>@(ksiazka.Ilosc * ksiazka.Cena) zł</p>
                             </div>
-                            <div class="col-md-2 center">
-                                <button class="remove-button" data-book-id="@ksiazka.Cena">X</button>
-                            </div>
+                        <form asp-controller="Book" asp-action="UsunZKoszyka" method="post">
+                            <input type="hidden" name="bookId" value="@ksiazka.Id" />
+                            <button type="submit" class="btn btn-danger">Usuń</button>
+                        </form>
                         </div>
                     </div>
                 }
