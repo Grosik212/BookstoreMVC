@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using BookStore.MVC.Models;
+using System.Linq;
+using BookstoreMVC.Models.Entities;
+using System.Text.Json;
 
 public class BookController : Controller
 {
@@ -56,6 +59,29 @@ public class BookController : Controller
         // Jeśli ModelState.IsValid jest false, wróć do widoku edycji z błędami walidacji
         return View(updatedBook);
     }
+    [HttpPost]
+    public IActionResult DodajDoKoszyka(int id)
+    {
+        var book = _context.Books.Find(id);
+        if (book == null)
+        {
+            return NotFound();
+        }
+
+        // Odczytaj koszyk z sesji, jeśli istnieje, lub utwórz nowy
+        var koszyk = HttpContext.Session.GetString("Koszyk") != null
+            ? JsonSerializer.Deserialize<Koszyk>(HttpContext.Session.GetString("Koszyk"))
+            : new Koszyk();
+
+        // Dodaj wybraną książkę do koszyka
+        koszyk.DodajDoKoszyka(book);
+
+        // Zapisz koszyk z powrotem do sesji
+        HttpContext.Session.SetString("Koszyk", JsonSerializer.Serialize(koszyk));
+
+        return RedirectToAction(nameof(Index), "Home");
+    }
+
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -77,4 +103,5 @@ public class BookController : Controller
     {
         return _context.Books.Any(e => e.Id == id);
     }
+
 }
