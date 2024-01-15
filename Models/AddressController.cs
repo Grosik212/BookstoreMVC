@@ -15,31 +15,26 @@ public class AddressController : Controller
         _context = context;
     }
 
-    [HttpGet]
-    public IActionResult AddAddress()
-    {
-        // Zwróć widok do dodawania adresu
-        return View();
-    }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddAddress(Address Address)
     {
-        if (ModelState.IsValid)
+        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+        if (userIdClaim != null)
         {
             try
             {
-                // Pobierz ID użytkownika z Claimów
-                string userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+               
+                string userId = userIdClaim.Value;
 
                 // Sprawdź czy udało się pobrać ID użytkownika
-                if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out int userId))
+                if (!string.IsNullOrEmpty(userId))
                 {
                     // Utwórz obiekt Address na podstawie danych z formularza
                     var newAddress = new Address
                     {
-                        UserId = userId.ToString(),
+                        UserId = userId,
                         Street = Address.Street,
                         Number = Address.Number,
                         Postcode = Address.Postcode,
@@ -68,6 +63,5 @@ public class AddressController : Controller
         // Jeśli walidacja nie powiodła się, zwróć użytkownika do widoku z błędami
         return View(Address);
     }
-
-
+  
 }
