@@ -1,11 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
+
+
+public class ApplicationUser : IdentityUser
+{
+
+}
 
 public class Address
 {
     public int Id { get; set; }
 
     [Required]
-    public int UserId { get; set; }
+    public string UserId { get; set; }
 
     [Required]
     public string Street { get; set; }

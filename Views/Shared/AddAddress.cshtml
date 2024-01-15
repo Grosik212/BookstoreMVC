@@ -1,0 +1,33 @@
+﻿@model Address
+
+<div class="row">
+    <form method="post" asp-action="AddAddress" asp-controller="Address">
+
+        <div class="form-group">
+            <label asp-for="Street">Street</label>
+            <input asp-for="Street" class="form-control" required />
+            <span asp-validation-for="Street"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Number">Number</label>
+            <input asp-for="Number" class="form-control" required />
+            <span asp-validation-for="Number"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Postcode">Postcode</label>
+            <input asp-for="Postcode" class="form-control" required />
+            <span asp-validation-for="Postcode"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="City">City</label>
+            <input asp-for="City" class="form-control" required />
+            <span asp-validation-for="City"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Dodaj adres</button>
+    </form>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Powrót</a>
+</div>
